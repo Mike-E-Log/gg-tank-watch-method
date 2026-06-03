@@ -1,0 +1,5 @@
+# Normalize all text to LF so the published-blob sha256 is stable across OSes.
+# eval-summary.json's hash backs the gardwyn.com provenance receipt — it MUST stay LF.
+* text=auto eol=lf
+*.json text eol=lf
+*.md   text eol=lf
