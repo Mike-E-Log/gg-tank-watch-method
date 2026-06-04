@@ -8,6 +8,8 @@ receipt from [gardwyn.com](https://gardwyn.com).
 - **[`eval-summary.json`](eval-summary.json)** — deterministic export of the test suite
   (198/198 green: 191 behavioral + 7 schema), bound to the source commit. Its `sha256` backs the
   gardwyn receipt — fetch and `sha256sum` to verify.
+- **[`decision-authority.md`](decision-authority.md)** — the design + threat model: how the AI is
+  scoped to situational awareness while the human keeps the final safety verdict.
 
 Rendered site: <https://mike-e-log.github.io/gg-tank-watch-method/>. The dashboard application source
 is private; this repo holds only the published method artifacts.

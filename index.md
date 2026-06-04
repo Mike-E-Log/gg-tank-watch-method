@@ -14,5 +14,8 @@ from [gardwyn.com](https://gardwyn.com).
 - **[Eval summary (eval-summary.json)](eval-summary.json)** — deterministic export of the
   behavioral + schema test suite (198/198 green), bound to the source commit. The `sha256` of this
   file backs the gardwyn receipt; fetch it and `sha256sum` to verify.
+- **[Decision authority (the human keeps the final verdict)](decision-authority.html)** — the design
+  boundary that scopes the AI to situational awareness and keeps the irreversible safety call with a
+  human, plus the three failure classes only a human catches.
 
 The dashboard application source is private. This repository holds only the published method artifacts.
