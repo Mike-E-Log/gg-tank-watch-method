@@ -1,4 +1,0 @@
-title: gg-tank-watch — safety method & red-team
-description: Published red-team and eval evidence for an AI-in-the-loop emergency dashboard.
-# No remote theme: the local _layouts/default.html owns the head (incl. robots:noindex).
-# Files without front-matter (eval-summary.json) are copied verbatim — hash preserved.
