@@ -34,6 +34,4 @@ answered with a structural control or an explicit human checkpoint.
    `status.json` — corroboration gate, provenance check, freshness honesty, date sanity — see
    the [gg-tank-watch README](https://github.com/Mike-E-Log/gg-tank-watch#readme).
 
-Rendered site: <https://mike-e-log.github.io/gg-tank-watch-method/>. The dashboard application
-source is private; this repo holds only the published method artifacts. (A third-party receipt
-of this export's sha256 was published at gardwyn.com in June 2026.)
+The dashboard application source is private; this repo holds only the published method artifacts.
