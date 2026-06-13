@@ -1,10 +1,10 @@
-# Failure Analysis: Red Team Report
+# Failure analysis: red-team report
 
 How the eval harness catches each failure mode before it reaches users.
 
 ## Methodology
 
-[`docs/DATA_QUALITY.md`](https://github.com/Mike-E-Log/gg-tank-watch/blob/main/docs/DATA_QUALITY.md) in the dashboard repo maps 12 failure modes (F1-F12) ranked by likelihood and harm. This document traces each mode to the specific test(s) that would catch it, and identifies which modes remain unguarded.
+[`docs/DATA_QUALITY.md`](https://github.com/Mike-E-Log/gg-tank-watch/blob/main/docs/DATA_QUALITY.md) in the dashboard repo maps 12 failure modes (F1–F12) ranked by likelihood and harm. This document traces each mode to the specific test(s) that would catch it, and identifies which modes remain unguarded.
 
 ## Failure mode → test mapping
 
