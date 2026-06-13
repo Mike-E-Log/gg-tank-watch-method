@@ -11,13 +11,13 @@ answered with a structural control or an explicit human checkpoint.
 
 ## The artifacts, and what each one proves
 
-- **[`failure-analysis.md`](failure-analysis.md)**: the 12-failure-mode (F1–F12) red-team.
+- [`failure-analysis.md`](failure-analysis.md): the 12-failure-mode (F1–F12) red-team.
   - Covers every way the system could lie, fabricate, stale-date, or be injected, from a fabricated all-clear (F1) to prompt injection via a scraped page (F12).
   - **Proves** the failure surface was mapped adversarially, not assumed.
-- **[`eval-summary.json`](eval-summary.json)**: a deterministic, source-commit-bound export of the test suite at receipt time.
+- [`eval-summary.json`](eval-summary.json): a deterministic, source-commit-bound export of the test suite at receipt time.
   - **198/198 green** (191 behavioral + 7 schema), machine-checked, not asserted.
   - Intentionally frozen so its hash stays verifiable; the suite kept growing after the snapshot (current totals in the [gg-tank-watch README](https://github.com/Mike-E-Log/gg-tank-watch#readme)).
-- **[`decision-authority.md`](decision-authority.md)**: the design + threat model.
+- [`decision-authority.md`](decision-authority.md): the design + threat model.
   - Scopes the AI to situational awareness while the human keeps the final safety verdict.
   - **Proves** the authority boundary was designed, not implied.
 
