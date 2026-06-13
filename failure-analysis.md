@@ -1,15 +1,10 @@
----
-layout: default
-title: gg-tank-watch — failure analysis (F1–F12 red-team)
----
-
-# Failure Analysis — Red Team Report
+# Failure Analysis: Red Team Report
 
 How the eval harness catches each failure mode before it reaches users.
 
 ## Methodology
 
-`docs/DATA_QUALITY.md` maps 12 failure modes (F1-F12) ranked by likelihood and harm. This document traces each mode to the specific test(s) that would catch it, and identifies which modes remain unguarded.
+[`docs/DATA_QUALITY.md`](https://github.com/Mike-E-Log/gg-tank-watch/blob/main/docs/DATA_QUALITY.md) in the dashboard repo maps 12 failure modes (F1-F12) ranked by likelihood and harm. This document traces each mode to the specific test(s) that would catch it, and identifies which modes remain unguarded.
 
 ## Failure mode → test mapping
 
@@ -49,18 +44,18 @@ How the eval harness catches each failure mode before it reaches users.
 
 | Category | Modes | Guarded | Partially guarded | Unguarded |
 |----------|-------|---------|-------------------|-----------|
-| Catastrophic | F1, F12 | F1 | F12 | — |
-| High harm | F2, F3, F4, F11 | F2, F4, F11 | F3 | — |
-| Medium harm | F5, F6, F7, F8 | F5, F6 | F7, F8 | — |
-| Low harm | F9, F10 | — | — | F9, F10 |
+| Catastrophic | F1, F12 | F1 | F12 | none |
+| High harm | F2, F3, F4, F11 | F2, F4, F11 | F3 | none |
+| Medium harm | F5, F6, F7, F8 | F5, F6 | F7, F8 | none |
+| Low harm | F9, F10 | none | none | F9, F10 |
 
-**8 of 12 failure modes are fully guarded by automated tests. 4 are partially guarded (the test catches the effect but not all vectors). 2 operational modes have no automated coverage (staleness banner is the manual fallback).**
+**6 of 12 failure modes are fully guarded by automated tests. 4 are partially guarded (the test catches the effect but not all vectors). 2 operational modes have no automated coverage (staleness banner is the manual fallback).**
 
 ## What the eval harness cannot catch
 
 1. **Plausible-but-wrong numerics (F3 residual).** If the model says 48,000 evacuees when the real number is 50,000, no automated test flags it. The 50% drop gate catches gross errors, not subtle ones.
 
-2. **Coordinated prompt injection (F12 residual).** If an attacker controls ≥2 indexed sources and one spoofs an official domain, the corroboration gate passes. This requires a sophisticated, targeted attack — low probability, but the architecture doesn't structurally prevent it.
+2. **Coordinated prompt injection (F12 residual).** If an attacker controls ≥2 indexed sources and one spoofs an official domain, the corroboration gate passes. This requires a sophisticated, targeted attack: low probability, but the architecture doesn't structurally prevent it.
 
 3. **Silent cron death (F9).** The pipeline has no external heartbeat monitor. If the cron stops and the staleness banner has a bug, users see no signal. Mitigation: the staleness banner is tested (P0-3), so both would have to fail simultaneously.
 

@@ -1,8 +1,3 @@
----
-layout: default
-title: gg-tank-watch — decision authority (the human keeps the final verdict)
----
-
 # Decision authority: the human keeps the final verdict
 
 In an emergency dashboard, the failure that can kill someone is a wrong "all-clear." So the design question that matters most is not how good the model is. It is who is allowed to declare safety, and what stops the model from doing it alone.
@@ -19,7 +14,7 @@ A person can only hold the verdict if the screen tells the truth about what is k
 
 ## 3. The human review step is the control for what tests can't catch
 
-The eval harness is strongest where failure is binary and catastrophic: all-clear vs. not, fabricated vs. real, stale vs. fresh. Eight of twelve red-team failure modes are fully guarded by automated tests. It is weakest where failure is continuous and subtle, and the method does not pretend otherwise. Three classes rely on the human, not the harness:
+The eval harness is strongest where failure is binary and catastrophic: all-clear vs. not, fabricated vs. real, stale vs. fresh. Six of twelve red-team failure modes are fully guarded by automated tests. It is weakest where failure is continuous and subtle, and the method does not pretend otherwise. Three classes rely on the human, not the harness:
 
 - **Plausible-but-wrong numerics.** "48,000 evacuees" when the truth is 50,000 passes every test. The 50% drop gate catches gross errors, not subtle ones.
 - **Coordinated prompt injection.** An attacker who controls two or more indexed sources, one spoofing an official domain, can pass the corroboration gate. Low probability, but the architecture does not structurally prevent it.
@@ -29,4 +24,4 @@ For all three, the control is a person reading the output, not a green test suit
 
 ## Why this is the load-bearing choice
 
-The automated suite verifies that the machinery behaves: 198/198 green ([eval summary](eval-summary.json), [red-team](failure-analysis.html)). It does not, and cannot, own the safety verdict. Keeping the human as the final authority is what makes the residual risks survivable. Every failure the harness cannot catch is one a human is positioned to catch, because the system surfaces uncertainty to that person instead of papering over it. The AI makes the reviewer faster and better informed. It does not get the last word.
+The automated suite verifies that the machinery behaves: 198/198 green ([eval summary](eval-summary.json), [red-team](failure-analysis.md)). It does not, and cannot, own the safety verdict. Keeping the human as the final authority is what makes the residual risks survivable. Every failure the harness cannot catch is one a human is positioned to catch, because the system surfaces uncertainty to that person instead of papering over it. The AI makes the reviewer faster and better informed. It does not get the last word.
