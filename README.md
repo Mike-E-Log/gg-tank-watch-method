@@ -21,7 +21,7 @@ deciding. Every identified way the system could mislead someone is enumerated, t
 ## Verify it yourself
 
 1. `sha256sum eval-summary.json` should print
-   `a4926bbbeb455125d63732eabb25803fc60c44536a62ae782ffec8fd1764dfd5`, reproducible from this
+   `5c9e015c820cede0a5f0a8c87b67c8193043699a137b137ed85d16823d6af65f`, reproducible from this
    repo's contents. On Windows: `certutil -hashfile eval-summary.json SHA256`.
 2. The file records the exact command used to run the tests (`eval/run_all.py --skip integration`) and is tied to the specific code version it was generated from.
 3. The dashboard archive runs four checks before anything reaches `status.json`: corroboration (an all-clear needs two independent sources), provenance (every claim is traced back to where it came from), freshness honesty, and date sanity. These are enforced in code, not in prompting. See the [gg-tank-watch README](https://github.com/Mike-E-Log/gg-tank-watch#readme) for the full table.
