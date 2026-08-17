@@ -6,6 +6,14 @@ live archive at [ggtankwatch.org](https://ggtankwatch.org)).
 The method in one sentence: the AI is scoped to *organizing* situational information, never
 deciding. Every identified way the system could mislead someone is enumerated, tested, and answered with a control built into the code or an explicit human checkpoint.
 
+That method is Anthropic's "helpful, honest, harmless" standard, held under real stakes:
+
+| Anthropic's standard | How this project held it |
+|---|---|
+| **Helpful** | The official picture, one calm page, at a glance. |
+| **Honest** | AI's role disclosed on the page. Every source real. |
+| **Harmless** | Informs, never instructs. Routes people to officials. |
+
 ## The artifacts, and what each one proves
 
 - [`failure-analysis.md`](failure-analysis.md): the red-team covering all 12 failure modes, labeled F1 through F12.
@@ -17,6 +25,16 @@ deciding. Every identified way the system could mislead someone is enumerated, t
 - [`decision-authority.md`](decision-authority.md): the design and threat model. A threat model is a structured list of the ways the system could go wrong and who could cause harm.
   - Scopes the AI to situational awareness while the human keeps the final safety verdict.
   - **Proves** the authority boundary was designed, not implied.
+
+## How the eval worked: dataset, tests, scorers
+
+Every AI eval has three parts: a dataset (the material being checked), tests (the statements that must hold), and scorers (whatever decides pass or fail). What each part was behind `eval-summary.json`:
+
+| Part | What it was in this project |
+|---|---|
+| **Dataset** | The archive itself: the published page and its data files. The pipeline tests add synthetic inputs, like a fabricated source URL or a lone source claiming the evacuation lifted, fed to a sandboxed copy of the update script. |
+| **Tests** | Plain Python functions, most of them born from a real mistake found in the product. The F1 to F12 red-team in [`failure-analysis.md`](failure-analysis.md) is the list of failures those tests answer. |
+| **Scorers** | Deterministic code, standard library only. Each test returns pass or fail with a one-line reason, and the runner exits nonzero on any failure. No LLM grades the gate. The two qualities code can't score (fact-extraction accuracy, design quality) use AI-graded rubrics in the parent repo, run manually, outside the gate. |
 
 ## Verify it yourself
 
