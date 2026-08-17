@@ -32,9 +32,9 @@ Every AI eval has three parts: a dataset (the material being checked), tests (th
 
 | Part | What it was in this project |
 |---|---|
-| **Dataset** | The archive's own files, plus trick inputs fed to the update script to see what it would write (a fake source URL, a lone source claiming the evacuation lifted). |
+| **Dataset** | The site's real files (the published page and its data files), plus made-up inputs fed to the update script to see what it would write (a fake source URL, a lone source claiming the evacuation lifted). |
 | **Tests** | Plain Python functions, most of them born from a real mistake found in the product. [`failure-analysis.md`](failure-analysis.md) names the 12 ways the system could fail (labeled F1 through F12, F for failure mode); the tests answer that list. |
-| **Scorers** | Plain code, no AI. Each test says pass or fail with a one-line reason, and one failure fails the whole run. The two judgment calls (fact accuracy, design quality) use AI-graded rubrics in the parent repo, outside the gate. |
+| **Scorers** | Plain code for every gating test: pass or fail with a one-line reason, and one failure fails the whole run. The two judgment calls (fact accuracy, design quality) used AI-graded rubrics in the parent repo, outside the gate. |
 
 ## Verify it yourself
 
