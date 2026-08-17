@@ -21,7 +21,7 @@ That method is Anthropic's "helpful, honest, harmless" standard, held under real
   - **Proves** every plausible failure was actively sought out, not assumed away.
 - [`eval-summary.json`](eval-summary.json): a snapshot of the test results at the time this archive was sealed, locked to the exact code version it was generated from and built to give the same result every time.
   - **210/210 green** (203 behavior checks + 7 data-format checks), produced by the test runner, not a human claim.
-  - Sealed to a fixed code version so its hash stays verifiable. The export leaves out the one meta-test that checks the export itself, so the full suite reports one more test than this file (current totals in the [gg-tank-watch README](https://github.com/Mike-E-Log/gg-tank-watch#readme)).
+  - Sealed to a fixed code version so its hash stays verifiable. The export leaves out the one meta-test that checks the export itself, so the live suite always runs more tests than this file records, and it has kept growing since the seal (current totals in the [gg-tank-watch README](https://github.com/Mike-E-Log/gg-tank-watch#readme)).
 - [`decision-authority.md`](decision-authority.md): the design and threat model. A threat model is a structured list of the ways the system could go wrong and who could cause harm.
   - Scopes the AI to situational awareness while the human keeps the final safety verdict.
   - **Proves** the authority boundary was designed, not implied.
