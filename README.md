@@ -28,12 +28,12 @@ That method is Anthropic's "helpful, honest, harmless" standard, held under real
 
 ## How the eval worked: dataset, tests, scorers
 
-Every AI eval has three parts: a dataset (the material being checked), tests (the statements that must hold), and scorers (whatever decides pass or fail). What each part was behind `eval-summary.json`:
+Every AI eval has three parts: a dataset (the material being checked), tests (the checks it must pass), and scorers (whatever decides pass or fail). What each part was behind `eval-summary.json`:
 
 | Part | What it was in this project |
 |---|---|
-| **Dataset** | The archive itself: the published page and its data files. The pipeline tests add synthetic inputs, like a fabricated source URL or a lone source claiming the evacuation lifted, fed to a sandboxed copy of the update script. |
-| **Tests** | Plain Python functions, most of them born from a real mistake found in the product. The F1 to F12 red-team in [`failure-analysis.md`](failure-analysis.md) is the list of failures those tests answer. |
+| **Dataset** | Two kinds of material. Most tests read the archive's real files: the published page and its data files. The pipeline tests instead ran a copy of the update script in a sandbox, fed it made-up inputs (a fake source URL, a single source claiming the evacuation was lifted), and checked what it wrote. |
+| **Tests** | Plain Python functions, most of them born from a real mistake found in the product. [`failure-analysis.md`](failure-analysis.md) names the 12 ways the system could fail (labeled F1 through F12, F for failure mode); the tests answer that list. |
 | **Scorers** | Deterministic code, standard library only. Each test returns pass or fail with a one-line reason, and the runner exits nonzero on any failure. No LLM grades the gate. The two qualities code can't score (fact-extraction accuracy, design quality) use AI-graded rubrics in the parent repo, run manually, outside the gate. |
 
 ## Verify it yourself
