@@ -32,9 +32,9 @@ Every AI eval has three parts: a dataset (the material being checked), tests (th
 
 | Part | What it was in this project |
 |---|---|
-| **Dataset** | Two kinds of material. Most tests read the archive's real files: the published page and its data files. The pipeline tests instead ran a copy of the update script in a sandbox, fed it made-up inputs (a fake source URL, a single source claiming the evacuation was lifted), and checked what it wrote. |
+| **Dataset** | The archive's own files, plus trick inputs fed to the update script to see what it would write (a fake source URL, a lone source claiming the evacuation lifted). |
 | **Tests** | Plain Python functions, most of them born from a real mistake found in the product. [`failure-analysis.md`](failure-analysis.md) names the 12 ways the system could fail (labeled F1 through F12, F for failure mode); the tests answer that list. |
-| **Scorers** | Deterministic code, standard library only. Each test returns pass or fail with a one-line reason, and the runner exits nonzero on any failure. No LLM grades the gate. The two qualities code can't score (fact-extraction accuracy, design quality) use AI-graded rubrics in the parent repo, run manually, outside the gate. |
+| **Scorers** | Plain code, no AI. Each test says pass or fail with a one-line reason, and one failure fails the whole run. The two judgment calls (fact accuracy, design quality) use AI-graded rubrics in the parent repo, outside the gate. |
 
 ## Verify it yourself
 
