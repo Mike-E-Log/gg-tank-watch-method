@@ -4,7 +4,7 @@ Published method and evidence for an AI-assisted, real-emergency situational-awa
 live archive at [ggtankwatch.org](https://ggtankwatch.org)).
 
 The method in one sentence: the AI is scoped to *organizing* situational information, never
-deciding. Every identified way the system could mislead someone is enumerated, tested, and answered with a control built into the code or an explicit human checkpoint.
+deciding. Every identified way the system could mislead someone is enumerated, tested, and answered with a control built into the code or an explicit human checkpoint. That is Anthropic's "helpful, honest, harmless" held at once: helpful (the official picture on one calm page), honest (AI role disclosed, every source real), harmless (informs, never instructs).
 
 ## The artifacts, and what each one proves
 
@@ -17,6 +17,14 @@ deciding. Every identified way the system could mislead someone is enumerated, t
 - [`decision-authority.md`](decision-authority.md): the design and threat model. A threat model is a structured list of the ways the system could go wrong and who could cause harm.
   - Scopes the AI to situational awareness while the human keeps the final safety verdict.
   - **Proves** the authority boundary was designed, not implied.
+
+## How the eval worked: dataset, tests, scorers
+
+The suite behind `eval-summary.json` follows the standard anatomy of an AI eval. There is a dataset being evaluated, tests that state what must hold, and scorers that decide pass or fail.
+
+- **The dataset (what was evaluated).** The archive itself. Tests read the published page and its data files directly, and the pipeline tests run a sandboxed copy of the update script on synthetic inputs (a fabricated source URL, a lone source claiming the evacuation lifted) and inspect what it writes.
+- **The tests (where they came from).** Most began as observed mistakes. A failure found in the real product became a permanent regression test, and the F1 to F12 red-team in [`failure-analysis.md`](failure-analysis.md) is the sought-out list those tests answer.
+- **The scorers (how pass/fail was decided).** Deterministic code, standard library only. Each test returns pass or fail with a one-line reason, and the runner exits nonzero on any failure. No LLM grades the gate. The two qualities code cannot score (fact-extraction accuracy, design quality) use AI-graded rubrics in the parent repo, run manually and never part of the pass/fail gate.
 
 ## Verify it yourself
 
